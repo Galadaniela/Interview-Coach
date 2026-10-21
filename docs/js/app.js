@@ -23,13 +23,12 @@ function escapeHtml(str) {
 function initHome() {
   const container = document.getElementById("roles");
   if (!container) return;
-  ["backend", "frontend", "tester"].forEach(role => {
+  Object.keys(ROLE_LABELS).forEach(role => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "role-card";
     btn.dataset.role = role;
     btn.innerHTML =
-      "<span class='role-symbol' aria-hidden='true'>" + (role === "frontend" ? "&lt;/&gt;" : "✓") + "</span>" +
       "<h2>" + escapeHtml(ROLE_LABELS[role]) + "</h2>" +
       "<p>" + escapeHtml(describeRole(role)) + "</p>" +
       "<span class='role-cta'>Comenzar práctica →</span>";

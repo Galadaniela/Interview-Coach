@@ -3,51 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practicá entrevistas técnicas de Frontend o Tester en español rioplatense y recibí feedback al instante.">
-  <meta name="theme-color" content="#f8fafc">
-  <title>Interview Coach — Prepará tu próxima entrevista</title>
+  <meta name="description" content="Practicá entrevistas técnicas de Backend, Frontend o Tester con feedback inmediato.">
+  <title>Interview Coach — Práctica de entrevistas técnicas</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="home-page">
+<body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
-  <header class="home-header">
-    <a class="home-brand" href="index.html" aria-label="Interview Coach, inicio">
-      <span class="brand-mark" aria-hidden="true">IC</span>
-      <span>Interview Coach</span>
-    </a>
-    <span class="header-note"><span aria-hidden="true"></span> Práctica a tu ritmo</span>
+  <header class="site-header">
+    <h1>Interview Coach</h1>
+    <p class="tagline">Practicá entrevistas técnicas en español y recibí feedback por respuesta.</p>
   </header>
 
-  <main id="main" class="home-main">
-    <section class="home-hero" aria-labelledby="home-title">
-      <p class="eyebrow"><span aria-hidden="true">01</span> Tu próximo paso profesional</p>
-      <h1 id="home-title">Interview <span>Coach</span></h1>
-      <p class="home-lead">Llegá a tu próxima entrevista con más confianza.</p>
-      <p class="home-description">Practicá preguntas técnicas en español, ordená tus ideas y descubrí cómo mejorar cada respuesta. Sin presión: estás acá para aprender.</p>
+  <main id="main" class="container">
+    <section class="intro" aria-labelledby="intro-title">
+      <h2 id="intro-title">Elegí el rol que querés practicar</h2>
+      <p>
+        Vas a recibir <strong>cinco preguntas</strong>, una por vez. Escribí tu respuesta,
+        obtené un puntaje por criterio con un ejemplo mejorado y al finalizar, tu resumen.
+        Todo se calcula en tu navegador: sin registro y sin servidor.
+      </p>
+      <p class="note">Consejo: no ingreses información personal en tus respuestas.</p>
     </section>
 
-    <section class="role-section" aria-labelledby="role-title">
-      <div class="section-heading">
-        <div>
-          <p class="section-kicker">Empezá por acá</p>
-          <h2 id="role-title">¿Qué rol querés practicar?</h2>
-        </div>
-        <p class="question-count"><span aria-hidden="true">5</span> preguntas por práctica</p>
-      </div>
+    <section aria-label="Roles disponibles">
       <div id="roles" class="roles-grid"></div>
     </section>
 
-    <section class="home-how" aria-label="Cómo funciona la práctica">
-      <div class="how-item"><span>01</span><p>Elegís tu especialidad</p></div>
-      <div class="how-item"><span>02</span><p>Respondés a tu manera</p></div>
-      <div class="how-item"><span>03</span><p>Te llevás feedback útil</p></div>
+    <section class="how" aria-labelledby="how-title">
+      <h2 id="how-title">Cómo funciona</h2>
+      <ol>
+        <li>Elegís un rol.</li>
+        <li>Respondés cinco preguntas técnicas por texto.</li>
+        <li>Recibís feedback: puntajes del 1 al 5 en Claridad, Estructura, Relevancia, Profundidad técnica y Confianza.</li>
+        <li>Cerrás con un resumen de tu desempeño.</li>
+      </ol>
     </section>
   </main>
 
-  <footer class="home-footer">
-    <p>Hecho para practicar, equivocarse y volver a intentar.</p>
-    <p>Sin registro. Tus respuestas quedan en este dispositivo.</p>
+  <footer class="site-footer">
+    <p>Los puntajes son orientativos y no reemplazan una devolución profesional.</p>
   </footer>
 
   <script src="js/data.js"></script>

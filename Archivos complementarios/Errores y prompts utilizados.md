@@ -77,17 +77,6 @@ Prompts de la conversación con la IA, en orden:
 20. **"Ahora agrega los errores y los prompts utilizados a los .md correspondientes"**
     → Actualización de este documento con el error 4 y los prompts 19-20.
 
-### Síntesis de prompts recientes
-
-- Portada: Crear una pantalla de inicio atractiva y motivadora para Interview Coach.
-- Roles: Ofrecer prácticas para Backend Developer, Frontend Developer y Tester.
-- Estilos: Aplicar una estética moderna, responsive y coherente con la paleta elegida.
-- Centrado: Alinear títulos, tarjetas, formularios y botones en las pantallas.
-- Degradado: Dar al fondo una textura suave que acompañe el inicio y el quiz.
-- Intensidad: Reforzar el matiz azul sin volverlo demasiado llamativo.
-- Transparencia: Integrar el formulario y las tarjetas del quiz con superficies translúcidas y legibles.
-- Encabezado: Ordenar visualmente el enlace de regreso, el rol y el progreso de la práctica.
-
 ## 3. Prompts reutilizables
 
 ### 3.1 Prompt base para generar el proyecto
