@@ -23,12 +23,20 @@ function escapeHtml(str) {
 function initHome() {
   const container = document.getElementById("roles");
   if (!container) return;
+  const icons = {
+    backend: "✓",
+    frontend: "&lt;/&gt;",
+    tester: "✓"
+  };
+
   Object.keys(ROLE_LABELS).forEach(role => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "role-card";
     btn.dataset.role = role;
     btn.innerHTML =
+      "<span class='role-arrow' aria-hidden='true'>↗</span>" +
+      "<span class='role-icon role-icon-" + role + "' aria-hidden='true'>" + icons[role] + "</span>" +
       "<h2>" + escapeHtml(ROLE_LABELS[role]) + "</h2>" +
       "<p>" + escapeHtml(describeRole(role)) + "</p>" +
       "<span class='role-cta'>Comenzar práctica →</span>";
