@@ -233,7 +233,254 @@ textarea[aria-invalid="true"] { border-color: var(--error); }
   background: var(--surface);
 }
 
+.home-page {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 1160px);
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+}
+
+.home-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.25rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+}
+
+.header-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.header-note span {
+  width: 0.55rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 4px rgba(15, 123, 79, 0.12);
+}
+
+.home-main {
+  width: min(100% - 3rem, 1060px);
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6.5rem) 0 2.5rem;
+  text-align: center;
+}
+
+.home-hero {
+  width: 100%;
+  max-width: 690px;
+  margin-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 1rem;
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  display: inline-grid;
+  width: 1.7rem;
+  aspect-ratio: 1;
+  place-items: center;
+  margin-right: 0.4rem;
+  border: 1px solid rgba(31, 79, 216, 0.25);
+  border-radius: 50%;
+  font-size: 0.68rem;
+}
+
+.home-hero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(3.25rem, 8vw, 5.7rem);
+  font-weight: 780;
+  line-height: 0.98;
+}
+
+.home-hero h1 span { color: var(--brand); }
+
+.home-lead {
+  margin: 1.5rem 0 0.5rem;
+  color: var(--ink);
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.home-description {
+  max-width: 590px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.section-kicker { margin-bottom: 0.35rem; }
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  line-height: 1.2;
+}
+
+.question-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.15rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.question-count span {
+  display: grid;
+  width: 1.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #d1fae5;
+  color: #047857;
+  font-size: 0.8rem;
+  font-weight: 750;
+}
+
+.role-section { width: 100%; }
+
+.role-section .role-card {
+  position: relative;
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(22, 33, 62, 0.06);
+  text-align: center;
+}
+
+.role-section .role-card::after {
+  position: absolute;
+  top: 1.55rem;
+  right: 1.6rem;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  content: "↗";
+}
+
+.home-how {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 720px);
+  margin-top: 2rem;
+}
+
+.how-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+.how-item span {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(31, 79, 216, 0.1);
+  color: var(--brand);
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.how-item p {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.home-footer {
+  padding: 1.25rem 1rem 2rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.home-footer p {
+  margin: 0.2rem 0;
+}
+
 @media (max-width: 560px) {
+  .home-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1rem 0;
+  }
+
+  .home-main {
+    width: min(100% - 1.5rem, 1060px);
+    padding-top: 2.5rem;
+  }
+
+  .home-how {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .role-section .role-card {
+    min-height: 190px;
+  }
+
   .site-header h1 { font-size: 1.4rem; }
   .big-score { font-size: 2rem; }
   .result-list li { flex-direction: column; gap: 0.3rem; }
