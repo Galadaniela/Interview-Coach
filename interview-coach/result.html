@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen — Interview Coach</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <h1>Resumen de tu práctica</h1>
+    <p class="role-tag" id="result-role"></p>
+  </header>
+
+  <main id="main" class="container">
+    <section class="overall" aria-labelledby="overall-title">
+      <h2 id="overall-title">Puntaje general</h2>
+      <p class="big-score" id="result-score">0<span> / 100</span></p>
+    </section>
+
+    <section aria-labelledby="per-question-title">
+      <h2 id="per-question-title">Puntaje por pregunta</h2>
+      <ul class="result-list" id="result-list"></ul>
+    </section>
+
+    <div class="fb-columns">
+      <section aria-labelledby="strengths-title">
+        <h2 id="strengths-title">Fortalezas</h2>
+        <ul id="result-strengths"></ul>
+      </section>
+      <section aria-labelledby="improvements-title">
+        <h2 id="improvements-title">Puntos a mejorar</h2>
+        <ul id="result-improvements"></ul>
+      </section>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" id="restart-btn">Practicar de nuevo</button>
+      <a class="btn ghost" href="index.html">Volver al inicio</a>
+    </div>
+
+    <p class="disclaimer">
+      Los puntajes son orientativos: la evaluación automática puede equivocarse y no
+      reemplaza una devolución profesional. Tu historial se guarda solo en este navegador.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <p>Interview Coach — práctica estática publicada con GitHub Pages.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
