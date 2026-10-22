@@ -3,18 +3,483 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAFAFA">
+  <meta name="description" content="Practicá entrevistas técnicas y recibí feedback al instante.">
   <title>Práctica — Interview Coach</title>
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #111827;
+      background: #FAFAFA;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      min-height: 100vh;
+      min-height: 100svh;
+      flex-direction: column;
+      margin: 0;
+      background: #FAFAFA;
+      line-height: 1.5;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(to right, rgba(229, 231, 235, 0.55) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(229, 231, 235, 0.55) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    body::after {
+      background-image:
+        radial-gradient(ellipse 38rem 32rem at 0% 0%, rgba(139, 92, 246, 0.22), transparent 72%),
+        radial-gradient(ellipse 40rem 34rem at 100% 100%, rgba(16, 185, 129, 0.22), transparent 72%);
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid #4F46E5;
+      outline-offset: 4px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: -9999px;
+      z-index: 2;
+      padding: 0.65rem 1rem;
+      border-radius: 0.75rem;
+      background: #4F46E5;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      left: 0.75rem;
+    }
+
+    .site-header {
+      width: 100%;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .header-inner {
+      display: grid;
+      width: min(100% - 3rem, 1000px);
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      margin: 0 auto;
+      padding: 1.25rem 0;
+    }
+
+    .crumb {
+      justify-self: start;
+      margin: 0;
+    }
+
+    .crumb a,
+    .btn {
+      display: inline-flex;
+      min-height: 2.75rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #E2E8F0;
+      border-radius: 999px;
+      background: #fff;
+      color: #1E293B;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .crumb a {
+      padding: 0.55rem 1rem;
+    }
+
+    .crumb a:hover,
+    .btn.ghost:hover {
+      border-color: #CBD5E1;
+      background: #F8FAFC;
+    }
+
+    .progress-summary {
+      grid-column: 2;
+      grid-row: 1;
+      min-width: min(17rem, 42vw);
+      text-align: center;
+    }
+
+    .role-tag {
+      display: inline-block;
+      margin: 0;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: #EEF2FF;
+      color: #4F46E5;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .progress {
+      margin: 0.35rem 0 0.45rem;
+      color: #1E293B;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 4px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #E2E8F0;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: #4F46E5;
+      transition: width 300ms ease;
+    }
+
+    .container {
+      display: flex;
+      width: min(100% - 2rem, 800px);
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.25rem, 3vh, 2rem);
+      margin: 0 auto;
+      padding: clamp(2rem, 6vh, 4rem) 0;
+    }
+
+    .question-box {
+      width: 100%;
+      padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 6vw, 4rem);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.045);
+      text-align: center;
+    }
+
+    .question-box h2 {
+      margin: 0;
+      color: #111827;
+      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    #answer-form,
+    #feedback {
+      width: 100%;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      border-radius: 1rem;
+      background: #fff;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.065);
+    }
+
+    #answer-form > label {
+      display: block;
+      margin-bottom: 1rem;
+      color: #1E293B;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    #answer-text {
+      display: block;
+      width: 100%;
+      min-height: 14rem;
+      resize: vertical;
+      padding: 1rem 1.1rem;
+      border: 1px solid #E2E8F0;
+      border-radius: 0.75rem;
+      background: #fff;
+      color: #1E293B;
+      line-height: 1.6;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    #answer-text::placeholder {
+      color: #94A3B8;
+    }
+
+    #answer-text:focus {
+      border-color: #4F46E5;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    #answer-text[aria-invalid="true"] {
+      border-color: #B91C1C;
+    }
+
+    .error {
+      margin: 0.65rem 0 0;
+      color: #B91C1C;
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.25rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      border-color: #4F46E5;
+      background: #4F46E5;
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      border-color: #4338CA;
+      background: #4338CA;
+    }
+
+    #next-btn {
+      min-height: 3rem;
+      padding-inline: 1.5rem;
+    }
+
+    #feedback h3 {
+      margin: 0 0 0.5rem;
+      color: #1E293B;
+      text-align: center;
+    }
+
+    .big-score {
+      margin: 0 0 1rem;
+      color: #4F46E5;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .big-score span,
+    .big-score strong {
+      color: #64748B;
+      font-size: 0.9rem;
+    }
+
+    .rubric {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .rubric caption {
+      margin-bottom: 0.5rem;
+      color: #334155;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .rubric th,
+    .rubric td {
+      padding: 0.65rem 0.5rem;
+      border-bottom: 1px solid #E2E8F0;
+      text-align: left;
+    }
+
+    .rubric th {
+      color: #334155;
+    }
+
+    .score-cell {
+      color: #4F46E5;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .fb-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .fb-columns h4,
+    .improved h4 {
+      margin: 0.75rem 0 0.35rem;
+      color: #1E293B;
+    }
+
+    .fb-columns ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: #475569;
+    }
+
+    .improved {
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      border-left: 3px solid #4F46E5;
+      border-radius: 0.75rem;
+      background: rgba(238, 242, 255, 0.38);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.045);
+    }
+
+    .improved p {
+      margin: 0.5rem 0 0;
+      color: #475569;
+    }
+
+    .improved .warn,
+    .disclaimer {
+      color: #64748B;
+      font-size: 0.85rem;
+    }
+
+    .disclaimer {
+      margin: 1rem 0 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
+
+    .site-footer {
+      padding: 0 1rem 1.25rem;
+      color: #64748B;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 620px) {
+      .header-inner {
+        width: min(100% - 2rem, 1000px);
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.75rem;
+      }
+
+      .crumb,
+      .progress-summary {
+        grid-column: 1;
+      }
+
+      .crumb {
+        justify-self: center;
+      }
+
+      .progress-summary {
+        grid-row: 2;
+        width: min(100%, 20rem);
+      }
+
+      .container {
+        justify-content: flex-start;
+        padding-top: 2rem;
+      }
+
+      .question-box {
+        border-radius: 1.5rem;
+      }
+
+      #answer-text {
+        min-height: 12rem;
+      }
+
+      .fb-columns {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
   <header class="site-header">
-    <p class="crumb"><a href="index.html">← Volver al inicio</a></p>
-    <p class="role-tag" id="role-name">Cargando…</p>
-    <p class="progress" id="progress">Pregunta 1 de 5</p>
-    <div class="progress-track" aria-hidden="true">
-      <div class="progress-bar" id="progress-bar"></div>
+    <div class="header-inner">
+      <p class="crumb"><a href="index.html">← Volver al inicio</a></p>
+      <div class="progress-summary">
+        <p class="role-tag" id="role-name">Backend Developer</p>
+        <p class="progress" id="progress">Pregunta 1 de 5</p>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -22,13 +487,13 @@
     <p id="live-region" class="visually-hidden" role="status" aria-live="polite"></p>
 
     <section class="question-box" aria-labelledby="question-text">
-      <h2 id="question-text">Preparando pregunta…</h2>
+      <h2 id="question-text">¿Qué es una API REST y cómo la diferencias de otros tipos de APIs?</h2>
     </section>
 
     <form id="answer-form" novalidate>
       <label for="answer-text">Tu respuesta</label>
       <textarea id="answer-text" name="answer" rows="7"
-        placeholder="Escribí tu respuesta con ejemplos y detalles…"
+        placeholder="Escribí tu respuesta con ejemplos y detalles..."
         aria-describedby="form-error"></textarea>
       <p id="form-error" class="error" role="alert" hidden></p>
       <div class="actions">
@@ -37,7 +502,7 @@
       </div>
     </form>
 
-    <section id="feedback" aria-labelledby="feedback-title" hidden></section>
+    <section id="feedback" aria-label="Feedback de tu respuesta" hidden></section>
 
     <div class="actions">
       <button type="button" class="btn primary" id="next-btn" hidden>Siguiente pregunta →</button>

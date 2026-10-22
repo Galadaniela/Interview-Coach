@@ -4,9 +4,457 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Practicá entrevistas técnicas de Frontend o Tester en español rioplatense y recibí feedback al instante.">
-  <meta name="theme-color" content="#f8fafc">
+  <meta name="theme-color" content="#FAFAFA">
   <title>Interview Coach — Prepará tu próxima entrevista</title>
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #111827;
+      background: #FAFAFA;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      min-height: 100vh;
+      min-height: 100svh;
+      flex-direction: column;
+      margin: 0;
+      background: #FAFAFA;
+      line-height: 1.5;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(to right, rgba(229, 231, 235, 0.55) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(229, 231, 235, 0.55) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    body::after {
+      background-image:
+        radial-gradient(ellipse 38rem 32rem at 0% 0%, rgba(139, 92, 246, 0.15), transparent 72%),
+        radial-gradient(ellipse 40rem 34rem at 100% 100%, rgba(16, 185, 129, 0.15), transparent 72%);
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid #4F46E5;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: -9999px;
+      z-index: 2;
+      padding: 0.65rem 1rem;
+      border-radius: 0.5rem;
+      background: #4F46E5;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      left: 0.75rem;
+    }
+
+    .home-header {
+      display: flex;
+      width: min(100% - 3rem, 1000px);
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding: 1.5rem 0 0;
+    }
+
+    .home-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #111827;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 2.25rem;
+      height: 2.25rem;
+      place-items: center;
+      border-radius: 0.7rem;
+      background: #4F46E5;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .header-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: #6B7280;
+      font-size: 0.9rem;
+    }
+
+    .header-note span {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+    }
+
+    .home-main {
+      display: flex;
+      width: min(100% - 3rem, 1000px);
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      padding: clamp(3.5rem, 8vh, 6rem) 0 2rem;
+      text-align: center;
+    }
+
+    .home-hero {
+      width: 100%;
+      max-width: 760px;
+      margin-bottom: 3.5rem;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      margin: 0 0 1.25rem;
+      color: #4F46E5;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow span {
+      display: inline-grid;
+      width: 1.75rem;
+      height: 1.75rem;
+      place-items: center;
+      border: 1px solid rgba(79, 70, 229, 0.45);
+      border-radius: 50%;
+      font-size: 0.65rem;
+      letter-spacing: 0;
+    }
+
+    .home-hero h1 {
+      margin: 0;
+      color: #111827;
+      font-size: clamp(4.5rem, 10vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -0.075em;
+      line-height: 0.94;
+    }
+
+    .home-hero h1 span {
+      display: block;
+      margin-top: 0.1em;
+      color: #4F46E5;
+    }
+
+    .home-lead {
+      margin: 1.75rem 0 0.6rem;
+      color: #111827;
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      font-weight: 600;
+    }
+
+    .home-description {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #6B7280;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .role-section {
+      width: 100%;
+      max-width: 920px;
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      margin-bottom: 0.45rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: #111827;
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
+      font-weight: 750;
+      letter-spacing: -0.05em;
+      line-height: 1.15;
+    }
+
+    .question-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0;
+      color: #6B7280;
+      font-size: 0.9rem;
+    }
+
+    .question-count span {
+      display: grid;
+      width: 1.75rem;
+      height: 1.75rem;
+      place-items: center;
+      border-radius: 50%;
+      background: #D1FAE5;
+      color: #059669;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .role-section .role-card {
+      position: relative;
+      display: flex;
+      width: 100%;
+      min-height: 230px;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.6rem 1.5rem 1.45rem;
+      border: 1px solid #F3F4F6;
+      border-radius: 16px;
+      background: #FFFFFF;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      text-align: center;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .role-section .role-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(79, 70, 229, 0.2);
+      box-shadow: 0 24px 44px -10px rgba(0, 0, 0, 0.09);
+    }
+
+    .role-card .role-arrow {
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      color: #9CA3AF;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    .role-card .role-icon {
+      display: grid;
+      width: 2.75rem;
+      height: 2.75rem;
+      place-items: center;
+      margin-bottom: 0.85rem;
+      border-radius: 0.8rem;
+      background: #EEF2FF;
+      color: #4F46E5;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .role-card[data-role="tester"] .role-icon {
+      background: #D1FAE5;
+      color: #059669;
+    }
+
+    .role-card h2 {
+      margin: 0 0 0.55rem;
+      color: #111827;
+      font-size: 1.2rem;
+      font-weight: 750;
+    }
+
+    .role-card p {
+      margin: 0 0 1rem;
+      color: #6B7280;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .role-cta {
+      margin-top: auto;
+      color: #4F46E5;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .home-how {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #E5E7EB;
+    }
+
+    .how-item {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.4rem;
+    }
+
+    .how-item span {
+      color: #4F46E5;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .how-item p {
+      margin: 0;
+      color: #6B7280;
+      font-size: 0.85rem;
+    }
+
+    .home-footer {
+      display: flex;
+      width: min(100% - 3rem, 1000px);
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0 auto;
+      padding: 0.5rem 0 1.25rem;
+      color: #9CA3AF;
+    }
+
+    .home-footer p {
+      margin: 0;
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 640px) {
+      .home-header,
+      .home-main,
+      .home-footer {
+        width: min(100% - 2rem, 1000px);
+      }
+
+      .home-header {
+        padding-top: 1rem;
+      }
+
+      .home-main {
+        padding-top: 3.25rem;
+      }
+
+      .home-hero {
+        margin-bottom: 2.75rem;
+      }
+
+      .home-hero h1 {
+        font-size: clamp(3.75rem, 17vw, 5rem);
+      }
+
+      .roles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .role-section .role-card {
+        min-height: 210px;
+      }
+
+      .home-how {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+      }
+
+      .how-item {
+        flex: initial;
+        justify-content: flex-start;
+        padding-left: 0;
+      }
+
+      .home-footer {
+        flex-direction: column;
+        gap: 0.4rem;
+        padding-bottom: 1rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .header-note {
+        font-size: 0.8rem;
+      }
+
+      .home-header {
+        gap: 0.5rem;
+      }
+
+      .home-brand {
+        gap: 0.55rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#main">Saltar al contenido</a>
