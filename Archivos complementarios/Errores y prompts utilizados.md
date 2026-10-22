@@ -77,6 +77,13 @@ Prompts de la conversación con la IA, en orden:
 20. **"Ahora agrega los errores y los prompts utilizados a los .md correspondientes"**
     → Actualización de este documento con el error 4 y los prompts 19-20.
 
+Síntesis de los prompts recientes:
+
+- **Diseño:** Crear en `quiz.html` una pantalla de práctica moderna y espaciosa, centrada y fiel a las especificaciones visuales indicadas.
+- **Degradado:** Intensificar un poco los colores violeta y verde del fondo para que el degradado se note más, sin que resulte demasiado llamativo.
+- **Contorno:** Añadir un borde sutil a la tarjeta del ejemplo de respuesta mejorada para destacarla con elegancia.
+- **Acento:** Incorporar una línea fina en el lado izquierdo de esa tarjeta, usando un color de la paleta de la página.
+
 ## 3. Prompts reutilizables
 
 ### 3.1 Prompt base para generar el proyecto
