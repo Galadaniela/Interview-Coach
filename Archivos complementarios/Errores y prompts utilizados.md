@@ -83,6 +83,7 @@ Síntesis de los prompts recientes:
 - **Degradado:** Intensificar un poco los colores violeta y verde del fondo para que el degradado se note más, sin que resulte demasiado llamativo.
 - **Contorno:** Añadir un borde sutil a la tarjeta del ejemplo de respuesta mejorada para destacarla con elegancia.
 - **Acento:** Incorporar una línea fina en el lado izquierdo de esa tarjeta, usando un color de la paleta de la página.
+- **Intensidad del fondo:** Reforzar un poco más los degradados del fondo para que se perciban con mayor claridad, manteniendo un aspecto suave.
 
 ## 3. Prompts reutilizables
 
